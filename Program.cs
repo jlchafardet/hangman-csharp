@@ -29,6 +29,9 @@ class Program
         // Step 4: Main game loop
         while (attemptsRemaining > 0 && new string(guessedWord) != wordToGuess)
         {
+            // Clear the screen
+            ClearScreen();
+
             // Display the current state of the guessed word
             Console.WriteLine("Word to guess: " + new string(guessedWord));
             Console.WriteLine("Attempts remaining: " + attemptsRemaining);
@@ -77,6 +80,7 @@ class Program
         }
 
         // Step 5: End game - check if the player has won or lost
+        ClearScreen();
         if (new string(guessedWord) == wordToGuess)
         {
             // Display the fully guessed word if the player wins
@@ -172,5 +176,11 @@ class Program
         };
 
         Console.WriteLine(hangmanStages[stage]);
+    }
+
+    // Function to clear the console screen
+    static void ClearScreen()
+    {
+        Console.Clear();
     }
 }
