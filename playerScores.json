@@ -1,7 +1,8 @@
 {
   "playerName": "Jose",
   "score": 90,
-  "word": "exception",
+  "word": "polymorphism",
   "won": true,
-  "date": "2024-10-01T07:08:52.9759699-07:00"
+  "attempts": 10,
+  "date": "2024-10-01T07:10:52.4146188-07:00"
 }

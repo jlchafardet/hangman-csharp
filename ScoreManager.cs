@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 public static class ScoreManager
 {
-    public static void SaveScore(string playerName, int score, string word, bool won, int attempts)
+    public static void SaveScore(string playerName, int score, string word, bool won, int attemptsUsed, int attemptsLeft)
     {
         // Save individual game score
         var playerScore = new
@@ -14,7 +14,8 @@ public static class ScoreManager
             score,
             word,
             won,
-            attempts,
+            attemptsUsed,
+            attemptsLeft,
             date = DateTime.Now
         };
         SaveToFile("playerScores.json", playerScore);
@@ -35,7 +36,7 @@ public static class ScoreManager
 
         // Update high scores
         var highScores = LoadFromFile<List<HighScore>>("gameHighScores.json") ?? new List<HighScore>();
-        highScores.Add(new HighScore { PlayerName = playerName, Score = score, Word = word, Attempts = attempts, Date = DateTime.Now });
+        highScores.Add(new HighScore { PlayerName = playerName, Score = score, Word = word, AttemptsUsed = attemptsUsed, AttemptsLeft = attemptsLeft, Date = DateTime.Now });
         highScores.Sort((a, b) => b.Score.CompareTo(a.Score)); // Sort by score descending
         SaveToFile("gameHighScores.json", highScores);
     }
@@ -46,7 +47,7 @@ public static class ScoreManager
         Console.WriteLine("\nHigh Scores:");
         foreach (var highScore in highScores)
         {
-            Console.WriteLine($"{highScore.PlayerName}: {highScore.Score} (Word: {highScore.Word}, Attempts: {highScore.Attempts}, Date: {highScore.Date})");
+            Console.WriteLine($"{highScore.PlayerName}: {highScore.Score} (Word: {highScore.Word}, Attempts Used: {highScore.AttemptsUsed}, Attempts Left: {highScore.AttemptsLeft}, Date: {highScore.Date})");
         }
     }
 
@@ -91,7 +92,8 @@ public static class ScoreManager
         public string PlayerName { get; set; } = "Unknown"; // Initialize with default value
         public int Score { get; set; }
         public string Word { get; set; } = string.Empty; // Initialize with default value
-        public int Attempts { get; set; }
+        public int AttemptsUsed { get; set; }
+        public int AttemptsLeft { get; set; }
         public DateTime Date { get; set; }
     }
 }

@@ -2,31 +2,50 @@
   {
     "PlayerName": "Jose",
     "Score": 100,
+    "Word": "",
+    "Attempts": 0,
     "Date": "2024-10-01T06:55:25.7348711-07:00"
   },
   {
     "PlayerName": "Jose",
     "Score": 90,
+    "Word": "",
+    "Attempts": 0,
     "Date": "2024-10-01T07:08:53.0443123-07:00"
   },
   {
     "PlayerName": "Jose",
+    "Score": 90,
+    "Word": "polymorphism",
+    "Attempts": 10,
+    "Date": "2024-10-01T07:10:52.4710022-07:00"
+  },
+  {
+    "PlayerName": "Jose",
     "Score": 70,
+    "Word": "",
+    "Attempts": 0,
     "Date": "2024-10-01T07:05:35.8470054-07:00"
   },
   {
     "PlayerName": "Jose",
     "Score": 60,
+    "Word": "",
+    "Attempts": 0,
     "Date": "2024-10-01T06:46:45.7155171-07:00"
   },
   {
     "PlayerName": "Unknown",
     "Score": 40,
+    "Word": "",
+    "Attempts": 0,
     "Date": "2024-10-01T06:50:08.4808801-07:00"
   },
   {
     "PlayerName": "Jose",
     "Score": 40,
+    "Word": "",
+    "Attempts": 0,
     "Date": "2024-10-01T06:53:12.3918372-07:00"
   }
 ]

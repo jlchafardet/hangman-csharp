@@ -24,7 +24,7 @@ class Program
         int attemptsRemaining = 6; // Number of attempts the player has
         List<char> guessedLetters = new List<char>(); // List to store guessed letters
         int score = 100; // Initialize score
-        int attempts = 0; // Initialize attempts
+        int attemptsUsed = 0; // Initialize attempts used
 
         // Step 4: Main game loop
         while (attemptsRemaining > 0 && new string(guessedWord) != wordToGuess)
@@ -65,7 +65,7 @@ class Program
 
                 // Add the guessed letter to the list of guessed letters
                 guessedLetters.Add(guess);
-                attempts++; // Increment attempts
+                attemptsUsed++; // Increment attempts used
 
                 // Check if the guessed letter is in the word
                 if (wordToGuess.Contains(guess))
@@ -96,7 +96,7 @@ class Program
         string playerName = UIHandler.GetPlayerName();
 
         // Save the score
-        ScoreManager.SaveScore(playerName, score, wordToGuess, won, attempts);
+        ScoreManager.SaveScore(playerName, score, wordToGuess, won, attemptsUsed, attemptsRemaining);
 
         // Display high scores
         ScoreManager.DisplayHighScores();
