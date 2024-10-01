@@ -90,8 +90,10 @@ class Program
         {
             // Display the word if the player loses
             Console.WriteLine("Game over! The word was: " + wordToGuess);
-            DisplayHangman(6); // Display the final stage of the hangman
         }
+
+        // Display the final state of the hangman
+        DisplayHangman(6 - attemptsRemaining);
 
         // Show the final state and wait for the player to press any key
         Console.WriteLine("Press any key to exit...");
