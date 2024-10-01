@@ -36,10 +36,44 @@ class Program
             DisplayHangman(6 - attemptsRemaining);
 
             // Display the current state of the guessed word
-            Console.WriteLine("Word to guess: " + new string(guessedWord));
-            Console.WriteLine("Attempts remaining: " + attemptsRemaining);
-            Console.WriteLine("Guessed letters: " + string.Join(", ", guessedLetters));
-            Console.Write("Enter a letter: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Word to guess: ");
+            Console.ResetColor();
+            foreach (char c in guessedWord)
+            {
+                Console.ForegroundColor = c == '_' ? ConsoleColor.White : ConsoleColor.Green;
+                Console.Write(c + " ");
+            }
+            Console.WriteLine();
+            Console.ResetColor();
+
+            // Display attempts remaining
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Attempts remaining: ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(attemptsRemaining);
+            Console.ResetColor();
+
+            // Display guessed letters
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("Guessed letters: ");
+            foreach (char c in guessedLetters)
+            {
+                if (wordToGuess.Contains(c))
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }
+                Console.Write(c + " ");
+            }
+            Console.WriteLine();
+            Console.ResetColor();
+
+            // Prompt for user input
+            Console.Write("\x1b[1mEnter a letter: \x1b[0m");
 
             // Get the player's guess
             string? input = Console.ReadLine();
