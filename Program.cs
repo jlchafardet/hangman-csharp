@@ -130,23 +130,20 @@ class Program
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Congratulations! You guessed the word: " + wordToGuess);
             Console.ResetColor();
-
-            // Ask for player's name
-            Console.Write("Enter your name: ");
-            string playerName = Console.ReadLine() ?? "Unknown";
-
-            // Save the score
-            SaveScore(playerName, score, wordToGuess, true);
         }
         else
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Game over! The word was: " + wordToGuess);
             Console.ResetColor();
-
-            // Save the score
-            SaveScore("Unknown", score, wordToGuess, false);
         }
+
+        // Ask for player's name
+        Console.Write("Enter your name: ");
+        string playerName = Console.ReadLine() ?? "Unknown";
+
+        // Save the score
+        SaveScore(playerName, score, wordToGuess, new string(guessedWord) == wordToGuess);
 
         // Display high scores
         DisplayHighScores();
