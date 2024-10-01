@@ -122,13 +122,19 @@ class Program
         if (new string(guessedWord) == wordToGuess)
         {
             // Display the fully guessed word if the player wins
-            Console.WriteLine("Congratulations! You guessed the word: " + wordToGuess);
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write("Congratulations! You guessed the word: ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(wordToGuess);
         }
         else
         {
             // Display the word if the player loses
-            Console.WriteLine("Game over! The word was: " + wordToGuess);
+            Console.Write("Game over! The word was: ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(wordToGuess);
         }
+        Console.ResetColor();
 
         // Show the final state and wait for the player to press any key
         Console.WriteLine("Press any key to exit...");
