@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json;
+using Newtonsoft.Json; // Ensure this is included
 
 class Program
 {
     static void Main()
     {
         // Step 1: Load words from the JSON file
-        List<string> words = LoadWordsFromFile("wordList.json");
+        List<string>? words = LoadWordsFromFile("wordList.json");
+
+        // Check if words is null
+        if (words == null || words.Count == 0)
+        {
+            Console.WriteLine("No words available to play the game.");
+            return;
+        }
 
         // Step 2: Select a random word from the list
         Random random = new Random();
@@ -30,34 +37,42 @@ class Program
             Console.Write("Enter a letter: ");
 
             // Get the player's guess
-            char guess = Console.ReadLine().ToLower()[0];
-
-            // Check if the letter has already been guessed
-            if (guessedLetters.Contains(guess))
+            string? input = Console.ReadLine();
+            if (input != null && input.Length > 0)
             {
-                Console.WriteLine("You already guessed that letter. Try again.");
-                continue;
-            }
+                char guess = input.ToLower()[0];
 
-            // Add the guessed letter to the list of guessed letters
-            guessedLetters.Add(guess);
-
-            // Check if the guessed letter is in the word
-            if (wordToGuess.Contains(guess))
-            {
-                // Update the guessed word with the correct letter
-                for (int i = 0; i < wordToGuess.Length; i++)
+                // Check if the letter has already been guessed
+                if (guessedLetters.Contains(guess))
                 {
-                    if (wordToGuess[i] == guess)
+                    Console.WriteLine("You already guessed that letter. Try again.");
+                    continue;
+                }
+
+                // Add the guessed letter to the list of guessed letters
+                guessedLetters.Add(guess);
+
+                // Check if the guessed letter is in the word
+                if (wordToGuess.Contains(guess))
+                {
+                    // Update the guessed word with the correct letter
+                    for (int i = 0; i < wordToGuess.Length; i++)
                     {
-                        guessedWord[i] = guess;
+                        if (wordToGuess[i] == guess)
+                        {
+                            guessedWord[i] = guess;
+                        }
                     }
+                }
+                else
+                {
+                    // Decrease the number of attempts remaining
+                    attemptsRemaining--;
                 }
             }
             else
             {
-                // Decrease the number of attempts remaining
-                attemptsRemaining--;
+                Console.WriteLine("Invalid input. Please enter a letter.");
             }
         }
 
@@ -76,7 +91,7 @@ class Program
     }
 
     // Function to load words from a JSON file
-    static List<string> LoadWordsFromFile(string fileName)
+    static List<string>? LoadWordsFromFile(string fileName)
     {
         try
         {
@@ -89,7 +104,7 @@ class Program
         {
             // If there is an error (e.g., file not found, invalid JSON), use a default list of words
             Console.WriteLine("Error loading words from file: " + ex.Message);
-            return new List<string> { "programming", "hangman", "challenge", "developer", "console" };
+            return null; // This is now valid
         }
     }
 
