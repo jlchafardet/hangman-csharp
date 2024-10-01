@@ -41,6 +41,16 @@ A simple Hangman game written in C#
 ]
 ```
 
+## Implemented Features Subset
+
+- **Simple Console-Based Hangman Game**: The game is a console-based Hangman game.
+- **Random Word Selection**: The game loads words from a JSON file (`wordList.json`). If the file is not found or contains invalid data, it uses a default list of words.
+- **Letter Guessing with Attempts Tracking**: The game allows the player to guess letters and tracks the number of attempts remaining.
+- **Display Fully Guessed Word**: The game displays the fully guessed word in green if the player wins.
+- **Graphical Hangman**: The game displays a graphical representation of the hangman as the player makes incorrect guesses.
+- **Enhanced User Interface**: The game uses colors and text formatting to enhance the display. Specific elements like "Word to guess:", "Attempts remaining:", and guessed letters are color-coded.
+- **Game Over and Win Messages**: The game displays a congratulatory message in blue if the player wins and a game over message in blue if the player loses.
+
 ## Future Feature Implementations
 
 ### Word Categories
