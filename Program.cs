@@ -27,6 +27,10 @@ class Program
         List<char> guessedLetters = new List<char>(); // List to store guessed letters
         int score = 100; // Initialize score
 
+        // Pause to see any initial errors
+        Console.WriteLine("Press any key to start the game...");
+        Console.ReadKey();
+
         // Step 4: Main game loop
         while (attemptsRemaining > 0 && new string(guessedWord) != wordToGuess)
         {
@@ -113,29 +117,19 @@ class Program
                 }
                 else
                 {
-                    // Decrease the number of attempts remaining
-                    attemptsRemaining--;
                     // Deduct points for incorrect guess
                     score -= 10;
+                    attemptsRemaining--;
                 }
-            }
-            else
-            {
-                Console.WriteLine("Invalid input. Please enter a letter.");
             }
         }
 
-        // Step 5: End game - check if the player has won or lost
-        ClearScreen();
-        DisplayHangman(6 - attemptsRemaining); // Display the final stage of the hangman
-
+        // Display the final result
         if (new string(guessedWord) == wordToGuess)
         {
-            // Display the fully guessed word if the player wins
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("Congratulations! You guessed the word: ");
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(wordToGuess);
+            Console.WriteLine("Congratulations! You guessed the word: " + wordToGuess);
+            Console.ResetColor();
 
             // Ask for player's name
             Console.Write("Enter your name: ");
@@ -146,22 +140,19 @@ class Program
         }
         else
         {
-            // Display the word if the player loses
-            Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write("Game over! The word was: ");
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(wordToGuess);
+            Console.WriteLine("Game over! The word was: " + wordToGuess);
+            Console.ResetColor();
 
             // Save the score
             SaveScore("Unknown", score, wordToGuess, false);
         }
-        Console.ResetColor();
 
         // Display high scores
         DisplayHighScores();
 
-        // Show the final state and wait for the player to press any key
-        Console.WriteLine("Press any key to exit...");
+        // Prompt to exit
+        Console.WriteLine("\nPress any key to exit...");
         Console.ReadKey();
     }
 
@@ -170,108 +161,89 @@ class Program
     {
         try
         {
-            // Read the JSON file content
-            string jsonContent = File.ReadAllText(fileName);
-            // Deserialize the JSON content to a list of words
-            return JsonConvert.DeserializeObject<List<string>>(jsonContent);
+            string json = File.ReadAllText(fileName);
+            return JsonConvert.DeserializeObject<List<string>>(json);
         }
         catch (Exception ex)
         {
-            // If there is an error (e.g., file not found, invalid JSON), use a default list of words
             Console.WriteLine("Error loading words from file: " + ex.Message);
-            return null; // This is now valid
+            return null;
         }
     }
 
-    // Function to display the current stage of the hangman
+    // Function to clear the screen
+    static void ClearScreen()
+    {
+        Console.Clear();
+    }
+
+    // Function to display the hangman
     static void DisplayHangman(int stage)
     {
         string[] hangmanStages = new string[]
         {
             @"
-                -----
-                |   |
-                    |
-                    |
-                    |
-                    |
-              =========",
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========",
             @"
-                -----
-                |   |
-                O   |
-                    |
-                    |
-                    |
-              =========",
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========",
             @"
-                -----
-                |   |
-                O   |
-                |   |
-                    |
-                    |
-              =========",
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========",
             @"
-                -----
-                |   |
-                O   |
-               /|   |
-                    |
-                    |
-              =========",
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========",
             @"
-                -----
-                |   |
-                O   |
-               /|\  |
-                    |
-                    |
-              =========",
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========",
             @"
-                -----
-                |   |
-                O   |
-               /|\  |
-               /    |
-                    |
-              =========",
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========",
             @"
-                -----
-                |   |
-                O   |
-               /|\  |
-               / \  |
-                    |
-              ========="
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+========="
         };
 
-        // Split the hangman stage into parts
-        string[] parts = hangmanStages[stage].Split('\n');
-
-        // Set the color for the hangman stand
+        // Display the appropriate stage
         Console.ForegroundColor = ConsoleColor.DarkYellow;
-        foreach (string part in parts)
-        {
-            if (part.Contains('O') || part.Contains('|') || part.Contains('/'))
-            {
-                // Set the color for the human part
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine(part);
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-            }
-            else
-            {
-                Console.WriteLine(part);
-            }
-        }
+        Console.WriteLine(hangmanStages[stage]);
         Console.ResetColor();
-    }
-
-    // Function to clear the console screen
-    static void ClearScreen()
-    {
-        Console.Clear();
     }
 
     // Function to save the score
@@ -360,7 +332,7 @@ class Program
     // Class to represent a high score
     class HighScore
     {
-        public string PlayerName { get; set; }
+        public string PlayerName { get; set; } = "Unknown"; // Initialize with default value
         public int Score { get; set; }
         public DateTime Date { get; set; }
     }

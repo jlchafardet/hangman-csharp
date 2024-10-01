@@ -1,6 +1,6 @@
 {
   "GamesWon": 1,
-  "GamesLost": 0,
-  "WinLossRatio": 1.0,
+  "GamesLost": 1,
+  "WinLossRatio": 0.5,
   "WordsGuessed": 1
 }
