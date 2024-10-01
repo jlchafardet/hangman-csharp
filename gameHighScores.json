@@ -56,6 +56,14 @@
     "Date": "2024-10-01T07:13:44.2607135-07:00"
   },
   {
+    "PlayerName": "Jose",
+    "Score": 60,
+    "Word": "debugging",
+    "AttemptsUsed": 11,
+    "AttemptsLeft": 2,
+    "Date": "2024-10-01T00:00:00-07:00"
+  },
+  {
     "PlayerName": "Unknown",
     "Score": 40,
     "Word": "",

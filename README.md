@@ -51,7 +51,7 @@ A simple Hangman game written in C#
 - **Display Fully Guessed Word**: The game displays the fully guessed word in green if the player wins.
 - **Graphical Hangman**: The game displays a graphical representation of the hangman as the player makes incorrect guesses.
 - **Enhanced User Interface**: The game uses colors and text formatting to enhance the display. Specific elements like "Word to guess:", "Attempts remaining:", and guessed letters are color-coded.
-- **Game Over and Win Messages**: The game displays a congratulatory message in blue if the player wins and a game over message in blue if the player loses.
+- **Game Over and Win Messages**: The game displays a congratulatory message in green if the player wins and a game over message in red if the player loses.
 - **Score Tracking**: Tracks and displays the player's score based on their performance, saves scores to a JSON file, and maintains high scores.
 
 ## Future Feature Implementations
@@ -126,13 +126,13 @@ A simple Hangman game written in C#
   2. Add sound effects for different game actions.
   3. Provide an option to enable or disable sound effects.
 
-### Leaderboard
+### ~~Leaderboard~~
 
-- **Description**: Maintain a leaderboard to display the top scores.
-- **Implementation Steps**:
-  1. Create a data structure to store high scores.
-  2. Update the leaderboard with new high scores.
-  3. Display the leaderboard at the end of the game or on demand.
+- ~~**Description**: Maintain a leaderboard to display the top scores.~~
+- ~~**Implementation Steps**:~~
+  ~~1. Create a data structure to store high scores.~~
+  ~~2. Update the leaderboard with new high scores.~~
+  ~~3. Display the leaderboard at the end of the game or on demand.~~
 
 ### Save and Load Game
 

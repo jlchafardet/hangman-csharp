@@ -1,9 +1,9 @@
 {
   "playerName": "Jose",
-  "score": 40,
-  "word": "recursion",
-  "won": false,
-  "attemptsUsed": 10,
-  "attemptsLeft": 0,
+  "score": 60,
+  "word": "debugging",
+  "won": true,
+  "attemptsUsed": 11,
+  "attemptsLeft": 2,
   "date": "2024-10-01T00:00:00-07:00"
 }
