@@ -32,11 +32,13 @@ class Program
             // Clear the screen
             ClearScreen();
 
+            // Display the current stage of the hangman
+            DisplayHangman(6 - attemptsRemaining);
+
             // Display the current state of the guessed word
             Console.WriteLine("Word to guess: " + new string(guessedWord));
             Console.WriteLine("Attempts remaining: " + attemptsRemaining);
             Console.WriteLine("Guessed letters: " + string.Join(", ", guessedLetters));
-            DisplayHangman(6 - attemptsRemaining); // Display the current stage of the hangman
             Console.Write("Enter a letter: ");
 
             // Get the player's guess
