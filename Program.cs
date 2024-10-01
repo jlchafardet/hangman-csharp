@@ -8,8 +8,8 @@ class Program
     static async Task Main()
     {
         // Pause at the beginning of the game
-        Console.WriteLine("Press any key to start the game...");
-        Console.ReadKey();
+        //Console.WriteLine("Press any key to start the game...");
+        //Console.ReadKey();
 
         // Step 1: Load words from the JSON file
         List<string>? words = DataManager.LoadWordsFromFile("wordList.json");
