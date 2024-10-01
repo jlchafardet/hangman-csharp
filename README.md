@@ -81,13 +81,13 @@ A simple Hangman game written in C#
   1. Create ASCII art for each stage of the hangman.
   2. Update the display to show the appropriate stage based on the number of incorrect guesses.
 
-### Word Import
+### ~~Word Import~~
 
-- **Description**: Allow players to import their own list of words from a file.
-- **Implementation Steps**:
-  1. Add an option to load words from a text file.
-  2. Implement file reading logic to import words into the game.
-  3. Validate the imported words to ensure they are suitable for the game.
+- ~~**Description**: Allow players to import their own list of words from a file.~~
+- ~~**Implementation Steps**:~~
+  ~~1. Add an option to load words from a text file.~~
+  ~~2. Implement file reading logic to import words into the game.~~
+  ~~3. Validate the imported words to ensure they are suitable for the game.~~
 
 ### Timed Mode
 
