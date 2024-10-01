@@ -70,22 +70,15 @@ public static class UIHandler
 ========="
         };
 
-        Console.ForegroundColor = ConsoleColor.DarkYellow;
         Console.WriteLine(hangmanStages[stage]);
-        Console.ResetColor();
     }
 
     public static void DisplayGuessedWord(char[] guessedWord)
     {
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.Write("Word to guess: ");
-        Console.ResetColor();
-        foreach (char c in guessedWord)
-        {
-            Console.ForegroundColor = c == '_' ? ConsoleColor.White : ConsoleColor.Green;
-            Console.Write(c + " ");
-        }
-        Console.WriteLine();
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(new string(guessedWord));
         Console.ResetColor();
     }
 
@@ -140,6 +133,19 @@ public static class UIHandler
             Console.WriteLine("Game over! The word was: " + wordToGuess);
         }
         Console.ResetColor();
+    }
+
+    public static void DisplayWordDefinition(string definition)
+    {
+        Console.WriteLine();
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("╔══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║                      Word Definition                     ║");
+        Console.WriteLine("╚══════════════════════════════════════════════════════════╝");
+        Console.ResetColor();
+        Console.WriteLine();
+        Console.WriteLine(definition);
+        Console.WriteLine();
     }
 
     public static string GetPlayerName()

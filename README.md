@@ -12,6 +12,7 @@ A simple Hangman game written in C#
 - Displays the fully guessed word if the player wins.
 - **Graphical Hangman**: Displays a graphical representation of the hangman as the player makes incorrect guesses.
 - **Score Tracking**: Tracks and displays the player's score based on their performance, saves scores to a JSON file, and maintains high scores.
+- **Word Definition**: Displays the definition of the word if the player guesses it correctly.
 
 ### How to Play
 
@@ -53,6 +54,7 @@ A simple Hangman game written in C#
 - **Enhanced User Interface**: The game uses colors and text formatting to enhance the display. Specific elements like "Word to guess:", "Attempts remaining:", and guessed letters are color-coded.
 - **Game Over and Win Messages**: The game displays a congratulatory message in green if the player wins and a game over message in red if the player loses.
 - **Score Tracking**: Tracks and displays the player's score based on their performance, saves scores to a JSON file, and maintains high scores.
+- **Word Definition**: Displays the definition of the word if the player guesses it correctly.
 
 ## Future Feature Implementations
 
@@ -150,12 +152,12 @@ A simple Hangman game written in C#
   ~~2. Provide clear and user-friendly prompts and messages.~~
   ~~3. Ensure the interface is accessible and easy to navigate.~~
 
-### Word Definition
+### ~~Word Definition~~
 
-- **Description**: Provide the definition of the word after the game ends.
-- **Implementation Steps**:
-  1. Integrate a dictionary API to fetch word definitions.
-  2. Display the definition of the word at the end of the game.
+- ~~**Description**: Provide the definition of the word after the game ends.~~
+- ~~**Implementation Steps**:~~
+  ~~1. Integrate a dictionary API to fetch word definitions.~~
+  ~~2. Display the definition of the word at the end of the game.~~
 
 ### Achievements
 

@@ -1,9 +1,9 @@
 {
   "playerName": "Jose",
-  "score": 60,
-  "word": "debugging",
+  "score": 70,
+  "word": "compiler",
   "won": true,
   "attemptsUsed": 11,
-  "attemptsLeft": 2,
+  "attemptsLeft": 3,
   "date": "2024-10-01T00:00:00-07:00"
 }

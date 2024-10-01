@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 class Program
 {
-    static void Main()
+    static async Task Main()
     {
         // Step 1: Load words from the JSON file
         List<string>? words = DataManager.LoadWordsFromFile("wordList.json");
@@ -92,6 +94,13 @@ class Program
         bool won = new string(guessedWord) == wordToGuess;
         UIHandler.DisplayFinalResult(won, wordToGuess);
 
+        if (won)
+        {
+            // Fetch and display the word definition
+            string definition = await FetchWordDefinition(wordToGuess);
+            UIHandler.DisplayWordDefinition(definition);
+        }
+
         // Ask for player's name
         string playerName = UIHandler.GetPlayerName();
 
@@ -103,5 +112,18 @@ class Program
 
         // Prompt to exit
         UIHandler.PromptToExit();
+    }
+
+    static async Task<string> FetchWordDefinition(string word)
+    {
+        using HttpClient client = new HttpClient();
+        string apiUrl = $"https://api.dictionaryapi.dev/api/v2/entries/en/{word}";
+        HttpResponseMessage response = await client.GetAsync(apiUrl);
+        response.EnsureSuccessStatusCode();
+        string responseBody = await response.Content.ReadAsStringAsync();
+
+        dynamic jsonResponse = Newtonsoft.Json.JsonConvert.DeserializeObject(responseBody);
+        string definition = jsonResponse[0].meanings[0].definitions[0].definition;
+        return definition;
     }
 }
