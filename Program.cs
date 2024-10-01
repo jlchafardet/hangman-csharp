@@ -28,8 +28,8 @@ class Program
         int score = 100; // Initialize score
 
         // Pause to see any initial errors
-        Console.WriteLine("Press any key to start the game...");
-        Console.ReadKey();
+        //Console.WriteLine("Press any key to start the game...");
+        //Console.ReadKey();
 
         // Step 4: Main game loop
         while (attemptsRemaining > 0 && new string(guessedWord) != wordToGuess)
