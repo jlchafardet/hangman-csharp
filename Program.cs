@@ -26,6 +26,7 @@ class Program
             Console.WriteLine("Word to guess: " + new string(guessedWord));
             Console.WriteLine("Attempts remaining: " + attemptsRemaining);
             Console.WriteLine("Guessed letters: " + string.Join(", ", guessedLetters));
+            DisplayHangman(6 - attemptsRemaining); // Display the current stage of the hangman
             Console.Write("Enter a letter: ");
 
             // Get the player's guess
@@ -70,6 +71,7 @@ class Program
         {
             // Display the word if the player loses
             Console.WriteLine("Game over! The word was: " + wordToGuess);
+            DisplayHangman(6); // Display the final stage of the hangman
         }
     }
 
@@ -89,5 +91,71 @@ class Program
             Console.WriteLine("Error loading words from file: " + ex.Message);
             return new List<string> { "programming", "hangman", "challenge", "developer", "console" };
         }
+    }
+
+    // Function to display the current stage of the hangman
+    static void DisplayHangman(int stage)
+    {
+        string[] hangmanStages = new string[]
+        {
+            @"
+                -----
+                |   |
+                    |
+                    |
+                    |
+                    |
+              =========",
+            @"
+                -----
+                |   |
+                O   |
+                    |
+                    |
+                    |
+              =========",
+            @"
+                -----
+                |   |
+                O   |
+                |   |
+                    |
+                    |
+              =========",
+            @"
+                -----
+                |   |
+                O   |
+               /|   |
+                    |
+                    |
+              =========",
+            @"
+                -----
+                |   |
+                O   |
+               /|\  |
+                    |
+                    |
+              =========",
+            @"
+                -----
+                |   |
+                O   |
+               /|\  |
+               /    |
+                    |
+              =========",
+            @"
+                -----
+                |   |
+                O   |
+               /|\  |
+               / \  |
+                    |
+              ========="
+        };
+
+        Console.WriteLine(hangmanStages[stage]);
     }
 }

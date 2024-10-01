@@ -10,6 +10,7 @@ A simple Hangman game written in C#
 - Randomly selects a word from a predefined list or a JSON file.
 - Allows the player to guess letters until they either guess the word or run out of attempts.
 - Displays the fully guessed word if the player wins.
+- **Graphical Hangman**: Displays a graphical representation of the hangman as the player makes incorrect guesses.
 
 ### How to Play
 
@@ -74,12 +75,12 @@ A simple Hangman game written in C#
   2. Display the score during and after the game.
   3. Optionally, save high scores to a file or database.
 
-### Graphical Hangman
+### ~~Graphical Hangman~~
 
-- **Description**: Display a graphical representation of the hangman as the player makes incorrect guesses.
-- **Implementation Steps**:
-  1. Create ASCII art for each stage of the hangman.
-  2. Update the display to show the appropriate stage based on the number of incorrect guesses.
+- ~~**Description**: Display a graphical representation of the hangman as the player makes incorrect guesses.~~
+- ~~**Implementation Steps**:~~
+  ~~1. Create ASCII art for each stage of the hangman.~~
+  ~~2. Update the display to show the appropriate stage based on the number of incorrect guesses.~~
 
 ### ~~Word Import~~
 
