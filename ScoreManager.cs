@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 public static class ScoreManager
 {
-    public static void SaveScore(string playerName, int score, string word, bool won)
+    public static void SaveScore(string playerName, int score, string word, bool won, int attempts)
     {
         // Save individual game score
         var playerScore = new
@@ -14,6 +14,7 @@ public static class ScoreManager
             score,
             word,
             won,
+            attempts,
             date = DateTime.Now
         };
         SaveToFile("playerScores.json", playerScore);
@@ -34,7 +35,7 @@ public static class ScoreManager
 
         // Update high scores
         var highScores = LoadFromFile<List<HighScore>>("gameHighScores.json") ?? new List<HighScore>();
-        highScores.Add(new HighScore { PlayerName = playerName, Score = score, Date = DateTime.Now });
+        highScores.Add(new HighScore { PlayerName = playerName, Score = score, Word = word, Attempts = attempts, Date = DateTime.Now });
         highScores.Sort((a, b) => b.Score.CompareTo(a.Score)); // Sort by score descending
         SaveToFile("gameHighScores.json", highScores);
     }
@@ -45,7 +46,7 @@ public static class ScoreManager
         Console.WriteLine("\nHigh Scores:");
         foreach (var highScore in highScores)
         {
-            Console.WriteLine($"{highScore.PlayerName}: {highScore.Score} (Date: {highScore.Date})");
+            Console.WriteLine($"{highScore.PlayerName}: {highScore.Score} (Word: {highScore.Word}, Attempts: {highScore.Attempts}, Date: {highScore.Date})");
         }
     }
 
@@ -89,6 +90,8 @@ public static class ScoreManager
     {
         public string PlayerName { get; set; } = "Unknown"; // Initialize with default value
         public int Score { get; set; }
+        public string Word { get; set; } = string.Empty; // Initialize with default value
+        public int Attempts { get; set; }
         public DateTime Date { get; set; }
     }
 }
