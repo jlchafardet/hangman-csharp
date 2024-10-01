@@ -16,7 +16,7 @@ public static class ScoreManager
             won,
             attemptsUsed,
             attemptsLeft,
-            date = DateTime.Now
+            date = DateTime.Now.Date // Store only the date
         };
         SaveToFile("playerScores.json", playerScore);
 
@@ -36,7 +36,7 @@ public static class ScoreManager
 
         // Update high scores
         var highScores = LoadFromFile<List<HighScore>>("gameHighScores.json") ?? new List<HighScore>();
-        highScores.Add(new HighScore { PlayerName = playerName, Score = score, Word = word, AttemptsUsed = attemptsUsed, AttemptsLeft = attemptsLeft, Date = DateTime.Now });
+        highScores.Add(new HighScore { PlayerName = playerName, Score = score, Word = word, AttemptsUsed = attemptsUsed, AttemptsLeft = attemptsLeft, Date = DateTime.Now.Date });
         highScores.Sort((a, b) => b.Score.CompareTo(a.Score)); // Sort by score descending
         SaveToFile("gameHighScores.json", highScores);
     }
@@ -76,7 +76,7 @@ public static class ScoreManager
             Console.ResetColor();
             Console.Write(" | Date: ");
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine(highScore.Date);
+            Console.WriteLine(highScore.Date.ToShortDateString()); // Display only the date
             Console.ResetColor();
         }
     }

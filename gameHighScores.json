@@ -25,6 +25,14 @@
   },
   {
     "PlayerName": "Jose",
+    "Score": 80,
+    "Word": "exception",
+    "AttemptsUsed": 10,
+    "AttemptsLeft": 4,
+    "Date": "2024-10-01T07:16:29.4860838-07:00"
+  },
+  {
+    "PlayerName": "Jose",
     "Score": 70,
     "Word": "",
     "AttemptsUsed": 0,
