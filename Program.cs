@@ -166,7 +166,7 @@ class Program
         string[] hangmanStages = new string[]
         {
             @"
-                -----
+                ----- // Brown color
                 |   |
                     |
                     |
@@ -174,7 +174,7 @@ class Program
                     |
               =========",
             @"
-                -----
+                ----- // Brown color
                 |   |
                 O   |
                     |
@@ -182,7 +182,7 @@ class Program
                     |
               =========",
             @"
-                -----
+                ----- // Brown color
                 |   |
                 O   |
                 |   |
@@ -190,7 +190,7 @@ class Program
                     |
               =========",
             @"
-                -----
+                ----- // Brown color
                 |   |
                 O   |
                /|   |
@@ -198,7 +198,7 @@ class Program
                     |
               =========",
             @"
-                -----
+                ----- // Brown color
                 |   |
                 O   |
                /|\  |
@@ -206,7 +206,7 @@ class Program
                     |
               =========",
             @"
-                -----
+                ----- // Brown color
                 |   |
                 O   |
                /|\  |
@@ -214,7 +214,7 @@ class Program
                     |
               =========",
             @"
-                -----
+                ----- // Brown color
                 |   |
                 O   |
                /|\  |
@@ -223,7 +223,10 @@ class Program
               ========="
         };
 
+        // Set the color for the hangman stand
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
         Console.WriteLine(hangmanStages[stage]);
+        Console.ResetColor();
     }
 
     // Function to clear the console screen
