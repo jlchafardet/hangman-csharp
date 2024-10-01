@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 
 public static class DataManager
 {
+    // Loads a list of words from a JSON file
     public static List<string>? LoadWordsFromFile(string fileName)
     {
         try
@@ -19,6 +20,7 @@ public static class DataManager
         }
     }
 
+    // Saves the player's score and updates overall stats and high scores
     public static void SaveScore(string playerName, int score, string word, bool won)
     {
         var playerScore = new
@@ -50,6 +52,7 @@ public static class DataManager
         SaveToFile("gameHighScores.json", highScores);
     }
 
+    // Saves data to a file in JSON format
     public static void SaveToFile<T>(string fileName, T data)
     {
         try
@@ -63,6 +66,7 @@ public static class DataManager
         }
     }
 
+    // Loads data from a file in JSON format
     public static T? LoadFromFile<T>(string fileName)
     {
         try
@@ -76,6 +80,7 @@ public static class DataManager
         }
     }
 
+    // Displays the high scores
     public static void DisplayHighScores()
     {
         var highScores = LoadFromFile<List<HighScore>>("gameHighScores.json") ?? new List<HighScore>();
@@ -86,6 +91,7 @@ public static class DataManager
         }
     }
 
+    // Class to represent overall game stats
     public class OverallStats
     {
         public int GamesWon { get; set; }
@@ -94,6 +100,7 @@ public static class DataManager
         public int WordsGuessed { get; set; }
     }
 
+    // Class to represent a high score
     public class HighScore
     {
         public string PlayerName { get; set; } = "Unknown";

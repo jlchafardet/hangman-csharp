@@ -1,9 +1,9 @@
 {
-  "playerName": "Jose",
-  "score": 70,
+  "playerName": "z",
+  "score": 40,
   "word": "compiler",
-  "won": true,
-  "attemptsUsed": 11,
-  "attemptsLeft": 3,
+  "won": false,
+  "attemptsUsed": 8,
+  "attemptsLeft": 0,
   "date": "2024-10-01T00:00:00-07:00"
 }

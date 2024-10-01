@@ -7,6 +7,10 @@ class Program
 {
     static async Task Main()
     {
+        // Pause at the beginning of the game
+        Console.WriteLine("Press any key to start the game...");
+        Console.ReadKey();
+
         // Step 1: Load words from the JSON file
         List<string>? words = DataManager.LoadWordsFromFile("wordList.json");
 
@@ -54,7 +58,7 @@ class Program
 
             // Get the player's guess
             string? input = Console.ReadLine();
-            if (input != null && input.Length > 0)
+            if (!string.IsNullOrEmpty(input))
             {
                 char guess = input.ToLower()[0];
 
@@ -114,16 +118,64 @@ class Program
         UIHandler.PromptToExit();
     }
 
+    // This function fetches the definition of a word from an online dictionary API
     static async Task<string> FetchWordDefinition(string word)
     {
+        // Create an instance of HttpClient to send HTTP requests
         using HttpClient client = new HttpClient();
+
+        // Construct the URL for the API request using the provided word
         string apiUrl = $"https://api.dictionaryapi.dev/api/v2/entries/en/{word}";
+
+        // Send a GET request to the API and wait for the response
         HttpResponseMessage response = await client.GetAsync(apiUrl);
+
+        // Ensure the response indicates success (status code 200-299)
         response.EnsureSuccessStatusCode();
+
+        // Read the response body as a string
         string responseBody = await response.Content.ReadAsStringAsync();
 
-        dynamic jsonResponse = Newtonsoft.Json.JsonConvert.DeserializeObject(responseBody);
-        string definition = jsonResponse[0].meanings[0].definitions[0].definition;
-        return definition;
+        // Deserialize the JSON response into a dynamic object
+        dynamic? jsonResponse = Newtonsoft.Json.JsonConvert.DeserializeObject(responseBody);
+
+        // Check if the JSON response is not null and contains at least one entry
+        if (jsonResponse != null && jsonResponse.Count > 0)
+        {
+            // Get the meanings array from the first entry in the JSON response
+            var meanings = jsonResponse[0]?.meanings as IEnumerable<dynamic>;
+
+            // Check if the meanings array is not null
+            if (meanings != null)
+            {
+                // Iterate through each meaning in the meanings array
+                foreach (var meaning in meanings)
+                {
+                    // Get the definitions array from the current meaning
+                    var definitions = meaning?.definitions as IEnumerable<dynamic>;
+
+                    // Check if the definitions array is not null
+                    if (definitions != null)
+                    {
+                        // Iterate through each definition in the definitions array
+                        foreach (var definition in definitions)
+                        {
+                            // Get the definition text from the current definition
+                            string? def = definition?.definition;
+
+                            // Check if the definition text is not null or empty
+                            if (!string.IsNullOrEmpty(def))
+                            {
+                                // Return the first non-empty definition found
+                                return def;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Return a default message if no definition is found
+        return "Definition not found.";
     }
 }

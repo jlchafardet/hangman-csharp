@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 
 public static class ScoreManager
 {
+    // Saves the player's score and updates overall stats and high scores
     public static void SaveScore(string playerName, int score, string word, bool won, int attemptsUsed, int attemptsLeft)
     {
         // Save individual game score
@@ -41,6 +42,7 @@ public static class ScoreManager
         SaveToFile("gameHighScores.json", highScores);
     }
 
+    // Displays the top 5 high scores
     public static void DisplayHighScores()
     {
         var highScores = LoadFromFile<List<HighScore>>("gameHighScores.json") ?? new List<HighScore>();
@@ -82,6 +84,7 @@ public static class ScoreManager
         }
     }
 
+    // Saves data to a file in JSON format
     private static void SaveToFile<T>(string fileName, T data)
     {
         try
@@ -95,6 +98,7 @@ public static class ScoreManager
         }
     }
 
+    // Loads data from a file in JSON format
     private static T? LoadFromFile<T>(string fileName)
     {
         try

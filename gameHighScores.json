@@ -94,5 +94,13 @@
     "AttemptsUsed": 10,
     "AttemptsLeft": 0,
     "Date": "2024-10-01T00:00:00-07:00"
+  },
+  {
+    "PlayerName": "z",
+    "Score": 40,
+    "Word": "compiler",
+    "AttemptsUsed": 8,
+    "AttemptsLeft": 0,
+    "Date": "2024-10-01T00:00:00-07:00"
   }
 ]
