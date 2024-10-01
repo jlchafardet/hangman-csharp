@@ -166,7 +166,7 @@ class Program
         string[] hangmanStages = new string[]
         {
             @"
-                ----- // Brown color
+                -----
                 |   |
                     |
                     |
@@ -174,7 +174,7 @@ class Program
                     |
               =========",
             @"
-                ----- // Brown color
+                -----
                 |   |
                 O   |
                     |
@@ -182,7 +182,7 @@ class Program
                     |
               =========",
             @"
-                ----- // Brown color
+                -----
                 |   |
                 O   |
                 |   |
@@ -190,7 +190,7 @@ class Program
                     |
               =========",
             @"
-                ----- // Brown color
+                -----
                 |   |
                 O   |
                /|   |
@@ -198,7 +198,7 @@ class Program
                     |
               =========",
             @"
-                ----- // Brown color
+                -----
                 |   |
                 O   |
                /|\  |
@@ -206,7 +206,7 @@ class Program
                     |
               =========",
             @"
-                ----- // Brown color
+                -----
                 |   |
                 O   |
                /|\  |
@@ -214,7 +214,7 @@ class Program
                     |
               =========",
             @"
-                ----- // Brown color
+                -----
                 |   |
                 O   |
                /|\  |
@@ -223,9 +223,25 @@ class Program
               ========="
         };
 
+        // Split the hangman stage into parts
+        string[] parts = hangmanStages[stage].Split('\n');
+
         // Set the color for the hangman stand
         Console.ForegroundColor = ConsoleColor.DarkYellow;
-        Console.WriteLine(hangmanStages[stage]);
+        foreach (string part in parts)
+        {
+            if (part.Contains('O') || part.Contains('|') || part.Contains('/'))
+            {
+                // Set the color for the human part
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine(part);
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+            }
+            else
+            {
+                Console.WriteLine(part);
+            }
+        }
         Console.ResetColor();
     }
 
