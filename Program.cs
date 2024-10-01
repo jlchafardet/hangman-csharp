@@ -61,10 +61,12 @@ class Program
         // Step 5: End game - check if the player has won or lost
         if (new string(guessedWord) == wordToGuess)
         {
+            // Display the fully guessed word if the player wins
             Console.WriteLine("Congratulations! You guessed the word: " + wordToGuess);
         }
         else
         {
+            // Display the word if the player loses
             Console.WriteLine("Game over! The word was: " + wordToGuess);
         }
     }

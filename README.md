@@ -7,6 +7,7 @@ A simple Hangman game written in C#
 - A simple console-based Hangman game.
 - Randomly selects a word from a predefined list.
 - Allows the player to guess letters until they either guess the word or run out of attempts.
+- Displays the fully guessed word if the player wins.
 
 ### How to Play
 1. Run the game using the command:
@@ -17,5 +18,6 @@ A simple Hangman game written in C#
 3. Enter a letter to guess.
 4. The game will update the display with the guessed letters and the number of attempts remaining.
 5. Continue guessing letters until you either guess the word or run out of attempts.
+6. If you guess the word correctly, the game will display the fully guessed word.
 
 ### Example
