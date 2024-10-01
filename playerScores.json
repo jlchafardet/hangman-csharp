@@ -1,9 +1,9 @@
 {
   "playerName": "Jose",
-  "score": 80,
-  "word": "exception",
-  "won": true,
+  "score": 40,
+  "word": "recursion",
+  "won": false,
   "attemptsUsed": 10,
-  "attemptsLeft": 4,
-  "date": "2024-10-01T07:16:29.4289693-07:00"
+  "attemptsLeft": 0,
+  "date": "2024-10-01T00:00:00-07:00"
 }

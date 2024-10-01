@@ -52,8 +52,9 @@ public static class ScoreManager
         Console.WriteLine("╚══════════════════════════════════════════════════════════╝");
         Console.ResetColor();
 
-        foreach (var highScore in highScores)
+        for (int i = 0; i < Math.Min(5, highScores.Count); i++)
         {
+            var highScore = highScores[i];
             Console.Write("Player: ");
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(highScore.PlayerName);

@@ -70,5 +70,13 @@
     "AttemptsUsed": 0,
     "AttemptsLeft": 0,
     "Date": "2024-10-01T06:53:12.3918372-07:00"
+  },
+  {
+    "PlayerName": "Jose",
+    "Score": 40,
+    "Word": "recursion",
+    "AttemptsUsed": 10,
+    "AttemptsLeft": 0,
+    "Date": "2024-10-01T00:00:00-07:00"
   }
 ]
