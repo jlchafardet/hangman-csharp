@@ -92,6 +92,10 @@ class Program
             Console.WriteLine("Game over! The word was: " + wordToGuess);
             DisplayHangman(6); // Display the final stage of the hangman
         }
+
+        // Show the final state and wait for the player to press any key
+        Console.WriteLine("Press any key to exit...");
+        Console.ReadKey();
     }
 
     // Function to load words from a JSON file
