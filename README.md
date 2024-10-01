@@ -142,13 +142,13 @@ A simple Hangman game written in C#
   2. Add an option to load a saved game state.
   3. Ensure the game state is correctly restored when loaded.
 
-### Enhanced User Interface
+### ~~Enhanced User Interface~~
 
-- **Description**: Improve the console interface with better formatting and user prompts.
-- **Implementation Steps**:
-  1. Use colors and text formatting to enhance the display.
-  2. Provide clear and user-friendly prompts and messages.
-  3. Ensure the interface is accessible and easy to navigate.
+- ~~**Description**: Improve the console interface with better formatting and user prompts.~~
+- ~~**Implementation Steps**:~~
+  ~~1. Use colors and text formatting to enhance the display.~~
+  ~~2. Provide clear and user-friendly prompts and messages.~~
+  ~~3. Ensure the interface is accessible and easy to navigate.~~
 
 ### Word Definition
 
