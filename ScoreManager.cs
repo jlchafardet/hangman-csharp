@@ -44,10 +44,40 @@ public static class ScoreManager
     public static void DisplayHighScores()
     {
         var highScores = LoadFromFile<List<HighScore>>("gameHighScores.json") ?? new List<HighScore>();
-        Console.WriteLine("\nHigh Scores:");
+
+        // ASCII box top border
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("╔══════════════════════════════════════════════════════════╗");
+        Console.WriteLine("║                      High Scores:                        ║");
+        Console.WriteLine("╚══════════════════════════════════════════════════════════╝");
+        Console.ResetColor();
+
         foreach (var highScore in highScores)
         {
-            Console.WriteLine($"{highScore.PlayerName}: {highScore.Score} (Word: {highScore.Word}, Attempts Used: {highScore.AttemptsUsed}, Attempts Left: {highScore.AttemptsLeft}, Date: {highScore.Date})");
+            Console.Write("Player: ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write(highScore.PlayerName);
+            Console.ResetColor();
+            Console.Write(" | Score: ");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(highScore.Score);
+            Console.ResetColor();
+            Console.Write(" | Word: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(highScore.Word);
+            Console.ResetColor();
+            Console.Write(" | Attempts Used: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(highScore.AttemptsUsed);
+            Console.ResetColor();
+            Console.Write(" | Attempts Left: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(highScore.AttemptsLeft);
+            Console.ResetColor();
+            Console.Write(" | Date: ");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(highScore.Date);
+            Console.ResetColor();
         }
     }
 
