@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using Newtonsoft.Json;
 
 class Program
 {
     static void Main()
     {
-        // Step 1: Define the list of words for the game
-        List<string> words = new List<string> { "programming", "hangman", "challenge", "developer", "console" };
+        // Step 1: Load words from the JSON file
+        List<string> words = LoadWordsFromFile("wordList.json");
 
         // Step 2: Select a random word from the list
         Random random = new Random();
@@ -68,6 +70,24 @@ class Program
         {
             // Display the word if the player loses
             Console.WriteLine("Game over! The word was: " + wordToGuess);
+        }
+    }
+
+    // Function to load words from a JSON file
+    static List<string> LoadWordsFromFile(string fileName)
+    {
+        try
+        {
+            // Read the JSON file content
+            string jsonContent = File.ReadAllText(fileName);
+            // Deserialize the JSON content to a list of words
+            return JsonConvert.DeserializeObject<List<string>>(jsonContent);
+        }
+        catch (Exception ex)
+        {
+            // If there is an error (e.g., file not found, invalid JSON), use a default list of words
+            Console.WriteLine("Error loading words from file: " + ex.Message);
+            return new List<string> { "programming", "hangman", "challenge", "developer", "console" };
         }
     }
 }

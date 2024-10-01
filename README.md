@@ -7,7 +7,7 @@ A simple Hangman game written in C#
 ### Features
 
 - A simple console-based Hangman game.
-- Randomly selects a word from a predefined list.
+- Randomly selects a word from a predefined list or a JSON file.
 - Allows the player to guess letters until they either guess the word or run out of attempts.
 - Displays the fully guessed word if the player wins.
 
@@ -22,6 +22,23 @@ A simple Hangman game written in C#
 4. The game will update the display with the guessed letters and the number of attempts remaining.
 5. Continue guessing letters until you either guess the word or run out of attempts.
 6. If you guess the word correctly, the game will display the fully guessed word.
+
+### Word Import
+
+- The game can load words from a JSON file named `wordList.json`.
+- If the file is not found or contains invalid data, a default list of words will be used.
+
+### Example JSON File (`wordList.json`)
+
+```json
+[
+  "example",
+  "words",
+  "for",
+  "hangman",
+  "game"
+]
+```
 
 ## Future Feature Implementations
 
