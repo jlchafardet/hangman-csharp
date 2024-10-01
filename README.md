@@ -164,34 +164,3 @@ A simple Hangman game written in C#
   1. Define a set of achievements (e.g., winning without incorrect guesses, guessing a word in one attempt).
   2. Track player progress towards achievements.
   3. Display unlocked achievements to the player.
-
-### Step 6: Git Commit Details
-Here is the detailed commit message summarizing the changes:
-
-````markdown
-# Implement Score Tracking Feature
-
-## Summary
-Implemented a scoring system with a maximum score of 100, applied penalties for incorrect guesses, displayed and updated the score during the game, saved scores to a JSON file, and tracked overall game statistics.
-
-## Changes
-- **Updated `Program.cs`**:
-  - Added logic to initialize, update, and display the score.
-  - Prompted for the player's name upon winning.
-  - Saved individual game scores to `playerScores.json`.
-  - Tracked overall game statistics in `gameOverallStats.json`.
-  - Maintained high scores in `gameHighScores.json` and displayed them at the end of the game.
-
-- **Updated `README.md`**:
-  - Documented the new Score Tracking feature under the "Implemented Features Subset" section.
-
-## Benefits
-- **User Experience**: Enhances the game by providing a scoring system and tracking player performance.
-- **Clarity**: Improves the documentation to reflect the current state of the game.
-
-## Usage
-No changes to the game's basic functionality. Players can continue to run the game as before:
-
-```sh
-dotnet run
-```
