@@ -94,10 +94,10 @@ class Program
         string playerName = UIHandler.GetPlayerName();
 
         // Save the score
-        DataManager.SaveScore(playerName, score, wordToGuess, won);
+        ScoreManager.SaveScore(playerName, score, wordToGuess, won);
 
         // Display high scores
-        DataManager.DisplayHighScores();
+        ScoreManager.DisplayHighScores();
 
         // Prompt to exit
         UIHandler.PromptToExit();
