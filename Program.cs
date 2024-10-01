@@ -130,6 +130,7 @@ class Program
         else
         {
             // Display the word if the player loses
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write("Game over! The word was: ");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(wordToGuess);
