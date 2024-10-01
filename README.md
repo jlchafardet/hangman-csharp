@@ -11,6 +11,7 @@ A simple Hangman game written in C#
 - Allows the player to guess letters until they either guess the word or run out of attempts.
 - Displays the fully guessed word if the player wins.
 - **Graphical Hangman**: Displays a graphical representation of the hangman as the player makes incorrect guesses.
+- **Score Tracking**: Tracks and displays the player's score based on their performance, saves scores to a JSON file, and maintains high scores.
 
 ### How to Play
 
@@ -20,9 +21,10 @@ A simple Hangman game written in C#
    ```
 2. The game will display the word to guess with underscores representing each letter.
 3. Enter a letter to guess.
-4. The game will update the display with the guessed letters and the number of attempts remaining.
+4. The game will update the display with the guessed letters, the number of attempts remaining, and the current score.
 5. Continue guessing letters until you either guess the word or run out of attempts.
-6. If you guess the word correctly, the game will display the fully guessed word.
+6. If you guess the word correctly, the game will display the fully guessed word and prompt for your name to save the score.
+7. The game will display the high scores at the end.
 
 ### Word Import
 
@@ -50,6 +52,7 @@ A simple Hangman game written in C#
 - **Graphical Hangman**: The game displays a graphical representation of the hangman as the player makes incorrect guesses.
 - **Enhanced User Interface**: The game uses colors and text formatting to enhance the display. Specific elements like "Word to guess:", "Attempts remaining:", and guessed letters are color-coded.
 - **Game Over and Win Messages**: The game displays a congratulatory message in blue if the player wins and a game over message in blue if the player loses.
+- **Score Tracking**: Tracks and displays the player's score based on their performance, saves scores to a JSON file, and maintains high scores.
 
 ## Future Feature Implementations
 
@@ -161,3 +164,112 @@ A simple Hangman game written in C#
   1. Define a set of achievements (e.g., winning without incorrect guesses, guessing a word in one attempt).
   2. Track player progress towards achievements.
   3. Display unlocked achievements to the player.
+
+### Step 6: Git Commit Details
+Here is the detailed commit message summarizing the changes:
+
+````markdown
+# Implement Score Tracking Feature
+
+## Summary
+Implemented a scoring system with a maximum score of 100, applied penalties for incorrect guesses, displayed and updated the score during the game, saved scores to a JSON file, and tracked overall game statistics.
+
+## Changes
+- **Updated `Program.cs`**:
+  - Added logic to initialize, update, and display the score.
+  - Prompted for the player's name upon winning.
+  - Saved individual game scores to `playerScores.json`.
+  - Tracked overall game statistics in `gameOverallStats.json`.
+  - Maintained high scores in `gameHighScores.json` and displayed them at the end of the game.
+
+- **Updated `README.md`**:
+  - Documented the new Score Tracking feature under the "Implemented Features Subset" section.
+
+## Benefits
+- **User Experience**: Enhances the game by providing a scoring system and tracking player performance.
+- **Clarity**: Improves the documentation to reflect the current state of the game.
+
+## Usage
+No changes to the game's basic functionality. Players can continue to run the game as before:
+
+```sh
+dotnet run
+```
+
+---
+*Implemented the Score Tracking feature in the Hangman game and updated the `README.md` to document the new feature.*
+````
+
+This commit message follows the workflow guidelines and provides a clear summary, changes, benefits, and usage instructions.
+````
+
+### Step 7: Git Commit Details
+Here is the detailed commit message summarizing the changes:
+
+````markdown
+# Implement Word Definition Feature
+
+## Summary
+Implemented a feature to provide the definition of the word after the game ends.
+
+## Changes
+- **Updated `Program.cs`**:
+  - Integrated a dictionary API to fetch word definitions.
+  - Displayed the definition of the word at the end of the game.
+
+- **Updated `README.md`**:
+  - Documented the new Word Definition feature under the "Future Feature Implementations" section.
+
+## Benefits
+- **User Experience**: Enhances the game by providing additional information to players.
+- **Clarity**: Improves the documentation to reflect the current state of the game.
+
+## Usage
+No changes to the game's basic functionality. Players can continue to run the game as before:
+
+```sh
+dotnet run
+```
+
+---
+*Implemented the Word Definition feature in the Hangman game and updated the `README.md` to document the new feature.*
+````
+
+This commit message follows the workflow guidelines and provides a clear summary, changes, benefits, and usage instructions.
+````
+
+### Step 8: Git Commit Details
+Here is the detailed commit message summarizing the changes:
+
+````markdown
+# Implement Achievements Feature
+
+## Summary
+Implemented a feature to introduce achievements for players to unlock based on their performance.
+
+## Changes
+- **Updated `Program.cs`**:
+  - Defined a set of achievements (e.g., winning without incorrect guesses, guessing a word in one attempt).
+  - Tracked player progress towards achievements.
+  - Displayed unlocked achievements to the player.
+
+- **Updated `README.md`**:
+  - Documented the new Achievements feature under the "Future Feature Implementations" section.
+
+## Benefits
+- **User Experience**: Enhances the game by providing additional motivation and engagement.
+- **Clarity**: Improves the documentation to reflect the current state of the game.
+
+## Usage
+No changes to the game's basic functionality. Players can continue to run the game as before:
+
+```sh
+dotnet run
+```
+
+---
+*Implemented the Achievements feature in the Hangman game and updated the `README.md` to document the new feature.*
+````
+
+This commit message follows the workflow guidelines and provides a clear summary, changes, benefits, and usage instructions.
+````

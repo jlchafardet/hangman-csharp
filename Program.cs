@@ -25,6 +25,7 @@ class Program
         // Step 3: Initialize game variables
         int attemptsRemaining = 6; // Number of attempts the player has
         List<char> guessedLetters = new List<char>(); // List to store guessed letters
+        int score = 100; // Initialize score
 
         // Step 4: Main game loop
         while (attemptsRemaining > 0 && new string(guessedWord) != wordToGuess)
@@ -72,6 +73,13 @@ class Program
             Console.WriteLine();
             Console.ResetColor();
 
+            // Display current score
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("Current score: ");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(score);
+            Console.ResetColor();
+
             // Prompt for user input
             Console.Write("\x1b[1mEnter a letter: \x1b[0m");
 
@@ -107,6 +115,8 @@ class Program
                 {
                     // Decrease the number of attempts remaining
                     attemptsRemaining--;
+                    // Deduct points for incorrect guess
+                    score -= 10;
                 }
             }
             else
@@ -126,6 +136,13 @@ class Program
             Console.Write("Congratulations! You guessed the word: ");
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(wordToGuess);
+
+            // Ask for player's name
+            Console.Write("Enter your name: ");
+            string playerName = Console.ReadLine() ?? "Unknown";
+
+            // Save the score
+            SaveScore(playerName, score, wordToGuess, true);
         }
         else
         {
@@ -134,8 +151,14 @@ class Program
             Console.Write("Game over! The word was: ");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(wordToGuess);
+
+            // Save the score
+            SaveScore("Unknown", score, wordToGuess, false);
         }
         Console.ResetColor();
+
+        // Display high scores
+        DisplayHighScores();
 
         // Show the final state and wait for the player to press any key
         Console.WriteLine("Press any key to exit...");
@@ -249,5 +272,96 @@ class Program
     static void ClearScreen()
     {
         Console.Clear();
+    }
+
+    // Function to save the score
+    static void SaveScore(string playerName, int score, string word, bool won)
+    {
+        // Save individual game score
+        var playerScore = new
+        {
+            playerName,
+            score,
+            word,
+            won,
+            date = DateTime.Now
+        };
+        SaveToFile("playerScores.json", playerScore);
+
+        // Update overall game stats
+        var overallStats = LoadFromFile<OverallStats>("gameOverallStats.json") ?? new OverallStats();
+        if (won)
+        {
+            overallStats.GamesWon++;
+            overallStats.WordsGuessed++;
+        }
+        else
+        {
+            overallStats.GamesLost++;
+        }
+        overallStats.WinLossRatio = overallStats.GamesWon / (double)(overallStats.GamesWon + overallStats.GamesLost);
+        SaveToFile("gameOverallStats.json", overallStats);
+
+        // Update high scores
+        var highScores = LoadFromFile<List<HighScore>>("gameHighScores.json") ?? new List<HighScore>();
+        highScores.Add(new HighScore { PlayerName = playerName, Score = score, Date = DateTime.Now });
+        highScores.Sort((a, b) => b.Score.CompareTo(a.Score)); // Sort by score descending
+        SaveToFile("gameHighScores.json", highScores);
+    }
+
+    // Function to save data to a JSON file
+    static void SaveToFile<T>(string fileName, T data)
+    {
+        try
+        {
+            string json = JsonConvert.SerializeObject(data, Formatting.Indented);
+            File.WriteAllText(fileName, json);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error saving data to file: " + ex.Message);
+        }
+    }
+
+    // Function to load data from a JSON file
+    static T? LoadFromFile<T>(string fileName)
+    {
+        try
+        {
+            string json = File.ReadAllText(fileName);
+            return JsonConvert.DeserializeObject<T>(json);
+        }
+        catch
+        {
+            return default;
+        }
+    }
+
+    // Function to display high scores
+    static void DisplayHighScores()
+    {
+        var highScores = LoadFromFile<List<HighScore>>("gameHighScores.json") ?? new List<HighScore>();
+        Console.WriteLine("\nHigh Scores:");
+        foreach (var highScore in highScores)
+        {
+            Console.WriteLine($"{highScore.PlayerName}: {highScore.Score} (Date: {highScore.Date})");
+        }
+    }
+
+    // Class to represent overall game stats
+    class OverallStats
+    {
+        public int GamesWon { get; set; }
+        public int GamesLost { get; set; }
+        public double WinLossRatio { get; set; }
+        public int WordsGuessed { get; set; }
+    }
+
+    // Class to represent a high score
+    class HighScore
+    {
+        public string PlayerName { get; set; }
+        public int Score { get; set; }
+        public DateTime Date { get; set; }
     }
 }
